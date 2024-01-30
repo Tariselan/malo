@@ -1,36 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dictionary CRUD</title>
-    <link rel="stylesheet" href="style.css">
-    <script type="module" src="script.js" defer></script>
-</head>
-<body>
-    <nav>
-        <div class="navbar">
-            <a href="index.html">Home</a>
-            <a href="dictionary.html">Dictionary</a>
-            <a class="right-item" href="#contact">Contact</a>
-        </div>
-    </nav>
-    <h1 style="text-align: center;">Dictionary CRUD</h1>
-
-    <!-- Form to add items -->
-    <form id="addItemForm">
-        <label for="title">Title:</label>
-        <input type="text" id="title" required>
-        <br>
-        <label for="description">Description:</label>
-        <textarea id="description"></textarea>
-        <br>
-        <button type="button" onclick="addNewItem()">Add Item</button>
-    </form>
-
-    <!-- List to display items -->
-    <ul id="itemList"></ul>
-
-    <script src="client.js"></script>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dictionary CRUD</title>
+        <link rel="stylesheet" href="style.css">
+        <script type="module" src="script.js" defer></script>
+    </head>
+    <body>
+        <nav>
+            <div class="navbar">
+                <a href="index.html">Home</a>
+                <a href="dictionary.html">Dictionary</a>
+                <a class="right-item" href="#contact">Contact</a>
+            </div>
+        </nav>
+        <h1 style="text-align: center;">Dictionary CRUD</h1>
+        <!-- Form to add items -->
+        <form id="addItemForm">
+            <label for="title">Title:</label>
+            <input type="text" id="title" required>
+            <br>
+            <label for="description">Description:</label>
+            <textarea id="description"></textarea>
+            <br>
+            <button type="button" onclick="addNewItem()">Add Item</button>
+        </form>
+        <!-- List to display items -->
+        <ul id="itemList"></ul>
+        <script src="client.js"></script>
+    </body>
 </html>
