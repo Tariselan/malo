@@ -77,12 +77,15 @@ function fetchItems() {
                 div.dataset.itemId = item.id; // Store item id using data attribute
 
                 div.innerHTML = `
-                    <h2>${parse(item.title, 0)} / ${parse(item.title, 1)}</h2>
-                    <h4>/${parse(item.title, 2)}/</h4>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <h2 style="margin-bottom: 0px;">${parse(item.title, 0)} / ${parse(item.title, 1)}</h2>
+                        <span style="text-align: right;">/${parse(item.title, 2)}/</span>
+                    </div>
+                    <hr style="border-color: #755946; "> <!-- Adjusted HR styles -->
                     ${item.description}
                     <br><div style="display: flex; justify-content: flex-end; gap:20px;">
-                    <button class="edit-btn">Edit</button>
-                    <button class="delete-btn">Delete</button>
+                        <button class="edit-btn">Edit</button>
+                        <button class="delete-btn">Delete</button>
                     </div>
                 `;
 
