@@ -54,14 +54,19 @@ body {
 
 .dictionary_entry {
     width: calc(33.33% - 20px);
-    color: #333;
+    color: #3d342d;
     margin: 10px;
     padding: 15px;
-    border: 1px solid #635d59;
-    border-radius: 8px;
+    padding-left: 20px;
+    border: 7px solid #755946;
+    border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
-    background-color: #dcd6cf;
+    background-color: #e4cfb6;
+}
+
+.dictionary_entry h2 {
+    font-family:'Times New Roman', Times, serif /*georgia doesnt support the diaresis combiner character :'( */
 }
 
 .dictionary_entry button {

@@ -12,7 +12,7 @@ app.use(express.static('public'));
 
 // Get all items
 app.get('/items', (req, res) => {
-    db.all('SELECT * FROM items', (err, rows) => {
+    db.all('SELECT * FROM items ORDER BY title;', (err, rows) => {
         if (err) {
             res.status(500).send(err.message);
             return;

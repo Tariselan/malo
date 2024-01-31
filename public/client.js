@@ -1,3 +1,8 @@
+// Import the parse function from script.js
+import { parse } from './script.js';
+
+//
+
 document.addEventListener('DOMContentLoaded', () => {
     fetchItems();
 });
@@ -19,29 +24,74 @@ function addNewItem() {
     });
 
     // Clear the form
-    document.getElementById('title').value = 'text';
-    document.getElementById('description').value = 'test';
+    document.getElementById('title').value = '';
+    document.getElementById('description').value = '';
 }
 
+document.getElementById('addItemForm').children[6].addEventListener('click', addNewItem)
+
 function fetchItems() {
+    // Define handleItemClick function
+    function handleItemClick(event) {
+        const target = event.target;
+        console.log('Clicked element:', target);
+
+        if (target.classList.contains('edit-btn')) {
+            event.stopPropagation(); // Stop event propagation
+            const itemId = target.closest('.dictionary_entry').dataset.itemId;
+            editItem(itemId);
+        } else if (target.classList.contains('delete-btn')) {
+            event.stopPropagation(); // Stop event propagation
+            const itemId = target.closest('.dictionary_entry').dataset.itemId;
+            deleteItem(itemId);
+        }
+    }
+    // Clone the itemList element without events
+    const newItemList = itemList.cloneNode(true);
+
+    // Replace the original itemList with the cloned one
+    itemList.parentNode.replaceChild(newItemList, itemList);
+
+    // Add new event listener to the cloned itemList
+    newItemList.addEventListener('click', handleItemClick);
+
     fetch('/items')
         .then(response => response.json())
         .then(items => {
             const itemList = document.getElementById('itemList');
             itemList.innerHTML = ''; // Clear previous items
 
+            // Custom sorting function
+            const customSort = (a, b) => {
+                // Assuming titles are single characters in the range 1-9, a-n
+                const charOrder = "123456789abcdefghijklmn";
+                return charOrder.indexOf(a.title) - charOrder.indexOf(b.title);
+            };
+
+            // Sort items using the custom sort function
+            items.sort(customSort);
+
             items.forEach(item => {
                 const div = document.createElement('div');
-                div.className = 'dictionary_entry'
+                div.className = 'dictionary_entry';
+                div.dataset.itemId = item.id; // Store item id using data attribute
+
                 div.innerHTML = `
-                    ${item.title} - ${item.description}
-                    <button onclick="editItem(${item.id})">Edit</button>
-                    <button onclick="deleteItem(${item.id})">Delete</button>
+                    <h2>${parse(item.title, 0)} / ${parse(item.title, 1)}</h2>
+                    <h4>/${parse(item.title, 2)}/</h4>
+                    ${item.description}
+                    <br><div style="display: flex; justify-content: flex-end; gap:20px;">
+                    <button class="edit-btn">Edit</button>
+                    <button class="delete-btn">Delete</button>
+                    </div>
                 `;
-                itemList.appendChild(div);
+
+                newItemList.appendChild(div);
             });
         });
 }
+
+
 
 function editItem(id) {
     const title = prompt('Enter new title:');

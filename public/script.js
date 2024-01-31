@@ -14,7 +14,7 @@ const letter = letters;
 
 const body = document.body;
 
-function parse(input, scriptNum) {
+const parse = (input, scriptNum) => {
     let inputArray = input.split("");
     let output = [];
     inputArray.forEach(element => {
@@ -36,6 +36,8 @@ function parse(input, scriptNum) {
     });
     return output.join("");
 }
+
+export { parse };
 
 // Loop through each span and log its innerHTML
 for (var i = 0; i < document.getElementsByTagName('span').length; i++) {

@@ -6,7 +6,6 @@
         <title>Dictionary CRUD</title>
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="dictionary.css">
-        <script type="module" src="script.js" defer></script>
     </head>
     <body>
         <nav>
@@ -25,10 +24,10 @@
             <label for="description">Description:</label>
             <textarea id="description"></textarea>
             <br>
-            <button type="button" onclick="addNewItem()">Add Item</button>
+            <button type="button">Add Item</button>
         </form>
         <!-- List to display items -->
         <div id="itemList"></div>
-        <script src="client.js"></script>
+        <script type="module" src="client.js"></script>
     </body>
 </html>
