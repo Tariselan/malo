@@ -1,0 +1,79 @@
+body {
+    background-color: #352f2b;
+    font-family: 'Georgia', serif;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+}
+
+/* Center the form */
+#addItemForm {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #635d59; /* Dark Taupe border */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    background-color: #dcd6cf; /* Light Warm Grey background */
+    color: #333;
+}
+
+/* Style the form inputs */
+#addItemForm label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+#addItemForm input,
+#addItemForm textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 12px;
+    box-sizing: border-box;
+}
+
+#addItemForm button {
+    background-color: #5e564f; /* Olive Drab */
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#addItemForm button:hover {
+    background-color: #463f3a; /* Darker Olive Drab on hover */
+}
+
+/* Style the item boxes */
+#itemList {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.dictionary_entry {
+    width: calc(33.33% - 20px);
+    color: #333;
+    margin: 10px;
+    padding: 15px;
+    border: 1px solid #635d59;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    background-color: #dcd6cf;
+}
+
+.dictionary_entry button {
+    margin-top: 10px;
+    background-color: #f44336; /* Red for delete button */
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.dictionary_entry button:hover {
+    background-color: #d32f2f; /* Darker red on hover */
+}

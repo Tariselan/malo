@@ -19,8 +19,8 @@ function addNewItem() {
     });
 
     // Clear the form
-    document.getElementById('title').value = '';
-    document.getElementById('description').value = '';
+    document.getElementById('title').value = 'text';
+    document.getElementById('description').value = 'test';
 }
 
 function fetchItems() {
@@ -31,13 +31,14 @@ function fetchItems() {
             itemList.innerHTML = ''; // Clear previous items
 
             items.forEach(item => {
-                const li = document.createElement('li');
-                li.innerHTML = `
+                const div = document.createElement('div');
+                div.className = 'dictionary_entry'
+                div.innerHTML = `
                     ${item.title} - ${item.description}
                     <button onclick="editItem(${item.id})">Edit</button>
                     <button onclick="deleteItem(${item.id})">Delete</button>
                 `;
-                itemList.appendChild(li);
+                itemList.appendChild(div);
             });
         });
 }
