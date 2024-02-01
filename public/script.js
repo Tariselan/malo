@@ -38,7 +38,7 @@ const parse = (input, scriptNum) => {
 }
 
 export { parse };
-
+/*
 // Loop through each span and log its innerHTML
 for (var i = 0; i < document.getElementsByTagName('span').length; i++) {
     let text = document.getElementsByTagName('span')[i].innerHTML;
@@ -63,7 +63,7 @@ const tableData = Array.from(map, ([array, entry]) => {
   });
 // Print the table
 console.table(tableData);
-
+*/
 //
 const consonant_place = ["Labial", "Coronal", "Palatal", "Velar", "Uvular"];
 const consonant_manner = ["Nasal", "Plosive", "Fricative", "Approximant"];

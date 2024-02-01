@@ -1,11 +1,15 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const morgan = require('morgan');
 const sqlite3 = require('sqlite3').verbose();
 
 const app = express();
 const port = 3000;
 
 const db = new sqlite3.Database('mydatabase.db');
+
+// Use morgan for logging
+app.use(morgan('combined'));
 
 app.use(bodyParser.json());
 app.use(express.static('public'));
@@ -24,14 +28,18 @@ app.get('/items', (req, res) => {
 // Add an item
 app.post('/items', (req, res) => {
     const { title, description, note } = req.body;
+    console.log('Received POST request to /items');
+
     db.run('INSERT INTO items (title, description, note) VALUES (?, ?, ?)', [title, description, note], (err) => {
         if (err) {
-            res.status(500).send(err.message);
+            console.error(err.message);
+            res.status(500).json({ error: 'Internal Server Error' });
             return;
         }
         res.json({ message: 'Item added successfully' });
     });
 });
+
 
 // Update an item
 app.put('/items/:id', (req, res) => {

@@ -19,9 +19,16 @@ function addNewItem() {
         },
         body: JSON.stringify({ title, description, note }),
     })
-    .then(response => response.json())
+    .then(response => {
+        console.log('Raw Response:', response);
+        return response.json();
+    })
     .then(item => {
+        console.log('Parsed JSON:', item);
         fetchItems(); // Refresh the item list after adding
+    })
+    .catch(error => {
+        console.error('Error during fetch:', error);
     });
 
     // Clear the form
