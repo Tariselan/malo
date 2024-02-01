@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Dictionary CRUD</title>
+        <title>Malo</title>
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="dictionary.css">
     </head>
@@ -12,22 +12,31 @@
             <div class="navbar">
                 <a href="index.html">Home</a>
                 <a href="dictionary.html">Dictionary</a>
-                <a class="right-item" href="#contact">Contact</a>
+                <a class="right-item" href="contact.html">Contact</a>
             </div>
         </nav>
         <h1 style="text-align: center;">Dictionary CRUD</h1>
         <!-- Form to add items -->
         <form id="addItemForm">
-            <label for="title">Title:</label>
-            <input type="text" id="title" required>
+            <div style="text-align:center;">
+                <label for="title">Title:</label>
+                <input type="text" id="title" required>
+            </div>
             <br>
-            <label for="description">Description:</label>
-            <textarea type="text" id="description"></textarea>
+            <div style="display:flex; justify-content:space-around; text-align:center;">
+                <div>
+                    <label for="description">Description:</label>
+                    <textarea type="text" id="description"></textarea>
+                </div>
+                <div>
+                    <label for="note">Note:</label>
+                    <textarea type="text" id="note"></textarea>
+                </div>
+            </div>
             <br>
-            <label for="note">Note:</label>
-            <textarea type="text" id="note"></textarea>
-            <br>
-            <button type="submit">Add Item</button>
+            <div style="display: flex; justify-content: space-around;">
+                <button type="submit">Add Item</button>
+            </div>
         </form>
         <!-- List to display items -->
         <div id="itemList"></div>

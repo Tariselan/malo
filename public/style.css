@@ -1,9 +1,9 @@
 body {
-    background-color: #352f2b; /* Dark Earthy Brown */
+    background-color: #332821; /* Dark Earthy Brown */
     font-family: 'Georgia', serif;
     margin: 0;
     padding: 0;
-    color: #fff;
+    color: #f5dcaf;
 }
 
 table {
@@ -27,36 +27,33 @@ th, td {
 
 th {
     background-color: #5e564f; /* Olive Drab background for headers */
-    color: #fff; /* White text for headers */
+    color: #f5dcaf; /* White text for headers */
 }
 
 .navbar {
-    background-color: #5e564f; /* Olive Drab for the navbar background */
+    background-color: #645649; /* Olive Drab for the navbar background */
     overflow: hidden;
-    border-bottom: 10px solid #574a3e; /* Different color for the navbar border */
-    border-top: 10px solid #574a3e; /* Different color for the navbar border */
-    border-left: 10px solid #574a3e;
-    border-right: 10px solid #574a3e;
+    border: 10px solid #524030; /* Different color for the navbar border */
 }
 
 .navbar a {
     float: left;
     display: block;
-    color: #fff; /* White text for navbar links */
+    color: #f5dcaf; 
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
 }
 
 .navbar a:hover {
-    background-color: #463f3a; /* Darker Olive Drab on hover */
-    color: #fff;
+    background-color: #463529; /* Darker Olive Drab on hover */
+    color: #f5dcaf;
 }
 
 .navbar .right-item {
     float: right;
     display: block;
-    color: #fff;
+    color: #f5dcaf;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;

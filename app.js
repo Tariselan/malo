@@ -9,7 +9,7 @@ const port = 3000;
 const db = new sqlite3.Database('mydatabase.db');
 
 // Use morgan for logging
-app.use(morgan('combined'));
+// app.use(morgan('combined')); // uncomment to turn on server side logging
 
 app.use(bodyParser.json());
 app.use(express.static('public'));

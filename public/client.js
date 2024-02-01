@@ -100,7 +100,7 @@ function fetchItems() {
                         </div>
                         <hr> <!-- Adjusted HR styles -->
                         ${item.description}
-                        ${noteSection}
+                        <pre>${noteSection}</pre>
                     </div>
                     <div class="button-container">
                         <button class="edit-btn">Edit</button>
@@ -116,21 +116,38 @@ function fetchItems() {
 
 
 function editItem(id) {
-    const title = prompt('Enter new title:');
-    const description = prompt('Enter new description:');
+    // Find the corresponding div in the DOM
+    const divToEdit = document.querySelector(`.dictionary_entry[data-item-id="${id}"]`);
+    
+    // Extract current values from the div
+    const currentTitle = divToEdit.querySelector('h2').innerText;
+    const currentDescription = divToEdit.querySelector('.entry-header').innerText;
+    const currentNote = divToEdit.querySelector('pre').innerText;
 
+    // Prompt the user for new values
+    const newTitle = prompt('Enter new title:', currentTitle);
+    const newDescription = prompt('Enter new description:', currentDescription);
+    const newNote = prompt('Enter new note:', currentNote);
+
+    // Update the div content with the new values
+    divToEdit.querySelector('h2').innerText = newTitle;
+    divToEdit.querySelector('.entry-header').innerText = newDescription;
+
+    // Send the updated values to the server
     fetch(`/items/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ title, description }),
+        body: JSON.stringify({ title: newTitle, description: newDescription, note: newNote }),
     })
     .then(response => response.json())
     .then(item => {
-        fetchItems(); // Refresh the item list after editing
+        // Refresh the item list after editing
+        fetchItems();
     });
 }
+
 
 function deleteItem(id) {
     if (confirm('Are you sure you want to delete this item?')) {
