@@ -23,8 +23,8 @@ app.get('/items', (req, res) => {
 
 // Add an item
 app.post('/items', (req, res) => {
-    const { title, description } = req.body;
-    db.run('INSERT INTO items (title, description) VALUES (?, ?)', [title, description], (err) => {
+    const { title, description, note } = req.body;
+    db.run('INSERT INTO items (title, description, note) VALUES (?, ?, ?)', [title, description, note], (err) => {
         if (err) {
             res.status(500).send(err.message);
             return;
@@ -36,8 +36,8 @@ app.post('/items', (req, res) => {
 // Update an item
 app.put('/items/:id', (req, res) => {
     const id = req.params.id;
-    const { title, description } = req.body;
-    db.run('UPDATE items SET title = ?, description = ? WHERE id = ?', [title, description, id], (err) => {
+    const { title, description, note} = req.body;
+    db.run('UPDATE items SET title = ?, description = ?, note = ? WHERE id = ?', [title, description, note, id], (err) => {
         if (err) {
             res.status(500).send(err.message);
             return;

@@ -10,13 +10,14 @@ document.addEventListener('DOMContentLoaded', () => {
 function addNewItem() {
     const title = document.getElementById('title').value;
     const description = document.getElementById('description').value;
+    const note = document.getElementById('note').value;
 
     fetch('/items', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ title, description }),
+        body: JSON.stringify({ title, description, note }),
     })
     .then(response => response.json())
     .then(item => {
@@ -26,15 +27,18 @@ function addNewItem() {
     // Clear the form
     document.getElementById('title').value = '';
     document.getElementById('description').value = '';
+    document.getElementById('note').value = '';
 }
 
-document.getElementById('addItemForm').children[6].addEventListener('click', addNewItem)
+document.getElementById('addItemForm').addEventListener('submit', function (event) {
+    event.preventDefault(); // Prevent the form from submitting in the traditional way
+    addNewItem(); // Call the function to add a new item
+});
 
 function fetchItems() {
     // Define handleItemClick function
     function handleItemClick(event) {
         const target = event.target;
-        console.log('Clicked element:', target);
 
         if (target.classList.contains('edit-btn')) {
             event.stopPropagation(); // Stop event propagation
@@ -75,20 +79,28 @@ function fetchItems() {
                 const div = document.createElement('div');
                 div.className = 'dictionary_entry';
                 div.dataset.itemId = item.id; // Store item id using data attribute
-
+            
+                let noteSection = '';
+                if (!(item.note == '')) {
+                    noteSection = `<br><br><strong>NOTE:</strong>${item.note}`;
+                }
+            
                 div.innerHTML = `
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <h2 style="margin-bottom: 0px;">${parse(item.title, 0)} / ${parse(item.title, 1)}</h2>
-                        <span style="text-align: right;">/${parse(item.title, 2)}/</span>
+                    <div class="entry-header">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <h2>${parse(item.title, 0)} / ${parse(item.title, 1)}</h2>
+                            <span>/${parse(item.title, 2)}/</span>
+                        </div>
+                        <hr> <!-- Adjusted HR styles -->
+                        ${item.description}
+                        ${noteSection}
                     </div>
-                    <hr style="border-color: #755946; "> <!-- Adjusted HR styles -->
-                    ${item.description}
-                    <br><div style="display: flex; justify-content: flex-end; gap:20px;">
+                    <div class="button-container">
                         <button class="edit-btn">Edit</button>
                         <button class="delete-btn">Delete</button>
                     </div>
                 `;
-
+            
                 newItemList.appendChild(div);
             });
         });
