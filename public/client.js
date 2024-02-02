@@ -93,13 +93,15 @@ function fetchItems() {
                 }
             
                 div.innerHTML = `
-                    <div class="entry-header">
+                    <div>
                         <div style="display: flex; justify-content: space-between; align-items: center;">
                             <h2>${parse(item.title, 0)} / ${parse(item.title, 1)}</h2>
                             <span>/${parse(item.title, 2)}/</span>
                         </div>
                         <hr> <!-- Adjusted HR styles -->
-                        ${item.description}
+                        <div class="entry-header">
+                            ${item.description}
+                        </div>
                         <pre>${noteSection}</pre>
                     </div>
                     <div class="button-container">
