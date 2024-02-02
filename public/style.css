@@ -50,6 +50,10 @@ th {
     color: #f5dcaf;
 }
 
+.navbar a#active {
+    background-color: #927a64;
+}
+
 .navbar .right-item {
     float: right;
     display: block;

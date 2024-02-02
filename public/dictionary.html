@@ -11,33 +11,35 @@
         <nav>
             <div class="navbar">
                 <a href="index.html">Home</a>
-                <a href="dictionary.html">Dictionary</a>
+                <a id="active" href="dictionary.html">Dictionary</a>
                 <a class="right-item" href="contact.html">Contact</a>
             </div>
         </nav>
-        <h1 style="text-align: center;">Dictionary CRUD</h1>
-        <!-- Form to add items -->
-        <form id="addItemForm">
-            <div style="text-align:center;">
-                <label for="title">Title:</label>
-                <input type="text" id="title" required>
-            </div>
+        <div>
             <br>
-            <div style="display:flex; justify-content:space-around; text-align:center;">
-                <div>
-                    <label for="description">Description:</label>
-                    <textarea type="text" id="description"></textarea>
+            <!-- Form to add items -->
+            <form id="addItemForm">
+                <div style="text-align:center;">
+                    <label for="title">Title:</label>
+                    <input type="text" id="title" required>
                 </div>
-                <div>
-                    <label for="note">Note:</label>
-                    <textarea type="text" id="note"></textarea>
+                <br>
+                <div style="display:flex; justify-content:space-around; text-align:center;">
+                    <div>
+                        <label for="description">Description:</label>
+                        <textarea type="text" id="description"></textarea>
+                    </div>
+                    <div>
+                        <label for="note">Note:</label>
+                        <textarea type="text" id="note"></textarea>
+                    </div>
                 </div>
-            </div>
-            <br>
-            <div style="display: flex; justify-content: space-around;">
-                <button type="submit">Add Item</button>
-            </div>
-        </form>
+                <br>
+                <div style="display: flex; justify-content: space-around;">
+                    <button type="submit">Add Item</button>
+                </div>
+            </form>
+        </div>
         <!-- List to display items -->
         <div id="itemList"></div>
         <script type="module" src="client.js"></script>
