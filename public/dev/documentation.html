@@ -28,6 +28,7 @@
                 overflow: auto;
                 padding: 1em 1.5em;
                 width:fit-content;
+                text-align: left;
             }
             span.code-snippet {
                 font-family: 'Courier New', Courier, monospace;
@@ -85,6 +86,50 @@
             .project-table th {
                 background-color: #f4f4f4;
             }
+            /* Add this to your existing styles */
+            #view-switch {
+                padding: 8px;
+                font-size: 16px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                margin: 10px auto; /* Center the select panel */
+                display: block;
+            }
+
+            #table-view,
+            #code-view {
+                text-align: center;
+            }
+
+            #table-view table {
+                width: 70%;
+                margin: 20px auto;
+                border-collapse: collapse;
+            }
+
+            #table-view th,
+            #table-view td {
+                border: 1px solid #ddd;
+                padding: 8px;
+                text-align: left;
+            }
+
+            #table-view th {
+                background-color: #f4f4f4;
+            }
+
+            #code-view {
+                display: none;
+                width: 100%;
+                margin: 20px auto;
+            }
+
+            #code-view pre {
+                background-color: #f4f4f4;
+                border: 1px solid #ddd;
+                padding: 15px;
+                overflow: auto;
+            }
         </style>
     </head>
     <body data-new-gr-c-s-check-loaded="14.1153.0" data-gr-ext-installed="">
@@ -108,68 +153,83 @@
             <div id="section_two">
                 <h2 id="s2">Section 2: Project Structure</h2>
                 <p>
+                    The project is in two sections, files outside the <span class="code-snippet">public/</span> folder and those within. Files within are for the client end of things, and the files outside are backend files. The files outside are as follows:
+                </p>
+                <ul>
+                    <li><b>app.js</b> - This handles the backend using <i>node.js</i></li>
+                    <li><b>mydatabase.db</b> - you will <b><i>NEVER</i></b> guess what this is (it's just a SQLite database dw)</li>
+                    <li><b>package.json</b> & <b>package-lock.json</b> - this handles packages in npm</li>
+                    <li><b>README.md</b> - this is the readme for the </li>
+                </ul>
+            </div>                    
+            <div id="section_three">
+                <h2 id="s3">Section 3: Public Folder</h2>
+                <p>
                     The project is organized into the following directories and files within the <span class="code-snippet">public/</span> folder:
                 </p>
-                <table class="project-table">
-                    <thead>
-                        <tr>
-                            <th>File/Folder</th>
-                            <th>Purpose</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>/dev/color.html</td>
-                            <td>Showcase of the project's color palette for design reference.</td>
-                        </tr>
-                        <tr>
-                            <td>/dev/documentation.html</td>
-                            <td>Detailed documentation for developers and contributors.</td>
-                        </tr>
-                        <tr>
-                            <td>/JSON/letter.json</td>
-                            <td>JSON file containing data related to letters in the conlang.</td>
-                        </tr>
-                        <tr>
-                            <td>/JSON/imports.json</td>
-                            <td>JSON file specifying external imports for the project.</td>
-                        </tr>
-                        <tr>
-                            <td>/client.js</td>
-                            <td>JavaScript file handling client-side functionality.</td>
-                        </tr>
-                        <tr>
-                            <td>/script.js</td>
-                            <td>Main JavaScript file orchestrating project-wide functionality.</td>
-                        </tr>
-                        <tr>
-                            <td>/dictionary.css</td>
-                            <td>CSS file styling the dictionary page.</td>
-                        </tr>
-                        <tr>
-                            <td>/style.css</td>
-                            <td>Global CSS styles for the entire project.</td>
-                        </tr>
-                        <tr>
-                            <td>/contact.html</td>
-                            <td>Contact page for users to reach out for inquiries or support.</td>
-                        </tr>
-                        <tr>
-                            <td>/dictionary.html</td>
-                            <td>Dictionary page providing an interactive interface for language exploration.</td>
-                        </tr>
-                        <tr>
-                            <td>/index.html</td>
-                            <td>Main landing page introducing the Malo conlang and worldbuilding project.</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <!-- Dropdown for switching views -->
+                <label for="view-switch">Select View: </label>
+                <select id="view-switch" onchange="toggleView()">
+                    <option value="table">Table</option>
+                    <option value="code">Code Snippet</option>
+                </select>
+                <div id="table-view">
+                    <table class="project-table">
+                        <thead>
+                            <tr>
+                                <th>File/Folder</th>
+                                <th>Purpose</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>/dev/color.html</td>
+                                <td>Showcase of the project's color palette for design reference.</td>
+                            </tr>
+                            <tr>
+                                <td>/dev/documentation.html</td>
+                                <td>Detailed documentation for developers and contributors.</td>
+                            </tr>
+                            <!-- Add more rows as needed -->
+                        </tbody>
+                    </table>
+                </div>
+                <div id="code-view" style="display:none;">
+                    <pre><code>
+                        --- /public/
+                            --- /dev/
+                                --- /color.html - Showcase of the project's color palette for design reference.
+                                --- /documentation.html - Detailed documentation for developers and contributors.
+                            --- /JSON/
+                                --- /letter.json - JSON file containing data related to letters in the conlang.
+                                --- /imports.json - JSON file specifying external imports for the project.
+                            --- /client.js - JavaScript file handling client-side functionality.
+                            --- /script.js - Main JavaScript file orchestrating project-wide functionality.
+                            --- /dictionary.css - CSS file styling the dictionary page.
+                            --- /style.css - Global CSS styles for the entire project.
+                            --- /contact.html - Contact page for users to reach out for inquiries or support.
+                            --- /dictionary.html - Dictionary page providing an interactive interface for language exploration.
+                            --- /index.html - Main landing page introducing the Malo conlang and worldbuilding project.
+                    </code></pre>                        
+                </div>
                 <p>
                     Each file in the <span class="code-snippet">public/</span> folder serves a specific purpose in the Malo project, contributing to its functionality, design, and user experience.
                 </p>
-            </div>                        
-            <div id="section_three">
-                <h2 id="s3">Section 3: Public Folder</h2>
+                <script>
+                    function toggleView() {
+                        var viewSwitch = document.getElementById("view-switch");
+                        var tableView = document.getElementById("table-view");
+                        var codeView = document.getElementById("code-view");
+                
+                        if (viewSwitch.value === "table") {
+                            tableView.style.display = "block";
+                            codeView.style.display = "none";
+                        } else {
+                            tableView.style.display = "none";
+                            codeView.style.display = "block";
+                        }
+                    }
+                </script>
                 <p>
                     Explore the color palette used in the project by visiting the <a href="color.html">Color Palette Showcase</a> page.
                 </p>
