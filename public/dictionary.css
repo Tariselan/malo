@@ -76,6 +76,10 @@
     width: 65px;
 }
 
+.dictionary_entry hr {
+    border-color: #3d342d;
+}
+
 .entry-header {
     flex: 1; /* Takes th7e available space, pushing the button-container to the bottom */
 }

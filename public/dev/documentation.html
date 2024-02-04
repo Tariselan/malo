@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Malo Documentation</title>
+        <style>
+            body {
+                font-family: 'Arial', sans-serif;
+                line-height: 1.6;
+                margin: 20px;
+                margin-left: 200px;
+                margin-right: 200px;
+                scroll-behavior: smooth;
+            }
+
+            h1, h2 {
+                color: #333;
+            }
+
+            code {
+                background-color: #f4f4f4;
+                border: 1px solid #ddd;
+                border-left: 3px solid #6f42c1;
+                color: #6738bd;
+                display: block;
+                margin: 0 0 20px;
+                overflow: auto;
+                padding: 1em 1.5em;
+                width:fit-content;
+            }
+            span.code-snippet {
+                font-family: 'Courier New', Courier, monospace;
+                background-color: #eee;
+                padding-left: 5px;
+                padding-right: 5px;
+                padding-top: 2px;
+                padding-bottom: 2px;
+                border: 4px #ddd solid;
+            }
+            /* Unvisited link */
+            a {
+                color: #6f42c1;
+                text-decoration: none; /* Remove the default underline */
+            }
+
+            /* Visited link */
+            a:visited {
+                color: #6f42c1; /* Same color as unvisited link */
+                text-decoration: none; /* Remove the default underline */
+            } 
+
+            /* Hover state for the link */
+            a:hover {
+                color: #533192;
+            }
+            div#index {
+                display: flex;
+                flex-wrap: wrap;
+            }
+            div#index > a {
+                width: calc(33.33% - 20px);
+                color: #3d342d;
+                margin: 10px;
+                padding: 15px;
+                padding-left: 20px;
+                border: 7px solid #dddddd;
+                border-radius: 3px;
+                box-sizing: border-box;
+                background-color: #e4e4e4;
+                text-align: center;
+            }
+            .project-table {
+                width: 75%;
+                margin: 20px auto; /* Center the table and provide a margin */
+                border-collapse: collapse;
+            }
+
+            .project-table th, .project-table td {
+                border: 1px solid #ddd;
+                padding: 8px;
+                text-align: left;
+            }
+
+            .project-table th {
+                background-color: #f4f4f4;
+            }
+        </style>
+    </head>
+    <body data-new-gr-c-s-check-loaded="14.1153.0" data-gr-ext-installed="">
+        <h1 style="text-align: center;"><i>Malo Documentation</i> Documentation</h1>   
+        <div id="index">
+            <a href="#s1">Section 1: Overview</a> 
+            <a href="#s2">Section 2: Project Structure</a>
+            <a href="#s3">Section 3: Public Folder</a>
+            <a href="#s4">Section 4: JavaScript files</a>
+            <a href="#s5">Section 5: JSON</a>
+            <a href="#s6">Section 6: </a>
+        </div>
+        <div id="content">
+            <div id="section_one">
+                <h2 id="s1">Section 1: Overview</h2>
+                <p>
+                    Welcome to the documentation for the Malo documentation app. Malo is a conlang made by me the programmess of the
+                    and worldbuilding project. This document provides an overview of the project structure, key components, and usage guidelines.
+                </p>
+            </div>
+            <div id="section_two">
+                <h2 id="s2">Section 2: Project Structure</h2>
+                <p>
+                    The project is organized into the following directories and files within the <span class="code-snippet">public/</span> folder:
+                </p>
+                <table class="project-table">
+                    <thead>
+                        <tr>
+                            <th>File/Folder</th>
+                            <th>Purpose</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>/dev/color.html</td>
+                            <td>Showcase of the project's color palette for design reference.</td>
+                        </tr>
+                        <tr>
+                            <td>/dev/documentation.html</td>
+                            <td>Detailed documentation for developers and contributors.</td>
+                        </tr>
+                        <tr>
+                            <td>/JSON/letter.json</td>
+                            <td>JSON file containing data related to letters in the conlang.</td>
+                        </tr>
+                        <tr>
+                            <td>/JSON/imports.json</td>
+                            <td>JSON file specifying external imports for the project.</td>
+                        </tr>
+                        <tr>
+                            <td>/client.js</td>
+                            <td>JavaScript file handling client-side functionality.</td>
+                        </tr>
+                        <tr>
+                            <td>/script.js</td>
+                            <td>Main JavaScript file orchestrating project-wide functionality.</td>
+                        </tr>
+                        <tr>
+                            <td>/dictionary.css</td>
+                            <td>CSS file styling the dictionary page.</td>
+                        </tr>
+                        <tr>
+                            <td>/style.css</td>
+                            <td>Global CSS styles for the entire project.</td>
+                        </tr>
+                        <tr>
+                            <td>/contact.html</td>
+                            <td>Contact page for users to reach out for inquiries or support.</td>
+                        </tr>
+                        <tr>
+                            <td>/dictionary.html</td>
+                            <td>Dictionary page providing an interactive interface for language exploration.</td>
+                        </tr>
+                        <tr>
+                            <td>/index.html</td>
+                            <td>Main landing page introducing the Malo conlang and worldbuilding project.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>
+                    Each file in the <span class="code-snippet">public/</span> folder serves a specific purpose in the Malo project, contributing to its functionality, design, and user experience.
+                </p>
+            </div>                        
+            <div id="section_three">
+                <h2 id="s3">Section 3: Public Folder</h2>
+                <p>
+                    Explore the color palette used in the project by visiting the <a href="color.html">Color Palette Showcase</a> page.
+                </p>
+            </div>
+            <div id="section_6">
+                <h2 id="s6">Section 6: Usage</h2>
+                <p>
+                    To explore and interact with the "Malo" conlang and worldbuilding project, follow these steps:
+                </p>
+                <pre><code>
+                    1. Clone the repository: git clone https://github.com/your-username/malo.git
+                    2. Navigate to the project directory: cd malo
+                    3. Install dependencies: npm install
+                    4. Run the application: node app.js
+                </code></pre>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Palette Showcase</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000; /* Light Gray background */
+        }
+
+        #color-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 600px; /* Set a maximum width for better responsiveness */
+        }
+
+        .color-box {
+            flex: 0 0 calc(20% - 10px); /* Equally split into five columns with some gap */
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .color-name {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div id="color-container">
+        <div class="color-box" style="background-color: #f0f0f0;"><div class="color-name">#f0f0f0</div></div>
+        <div class="color-box" style="background-color: #e4caae;"><div class="color-name">#e4caae</div></div>
+        <div class="color-box" style="background-color: #fae2d2;"><div class="color-name">#fae2d2</div></div>
+        <div class="color-box" style="background-color: #dcd6cf;"><div class="color-name">#dcd6cf</div></div>
+        <div class="color-box" style="background-color: #f5dcaf;"><div class="color-name">#f5dcaf</div></div>
+
+        <div class="color-box" style="background-color: #927a64;"><div class="color-name">#927a64</div></div>
+        <div class="color-box" style="background-color: #5e564f;"><div class="color-name">#5e564f</div></div>
+        <div class="color-box" style="background-color: #645649;"><div class="color-name">#645649</div></div>
+        <div class="color-box" style="background-color: #4e392a;"><div class="color-name">#4e392a</div></div>
+        <div class="color-box" style="background-color: #332821;"><div class="color-name">#332821</div></div>
+
+        <div class="color-box" style="background-color: #524030;"><div class="color-name">#524030</div></div>
+        <div class="color-box" style="background-color: #f44336;"><div class="color-name">#f44336</div></div>
+        <div class="color-box" style="background-color: #d32f2f;"><div class="color-name">#d32f2f</div></div>
+        <div class="color-box" style="background-color: #463529;"><div class="color-name">#463529</div></div>
+        <div class="color-box" style="background-color: #f1d1a9;"><div class="color-name">#f1d1a9</div></div>
+    </div>
+
+    <script>
+        // Sort the color boxes by hue and brightness
+        const colorContainer = document.getElementById('color-container');
+        const colorBoxes = Array.from(document.querySelectorAll('.color-box'));
+
+        colorBoxes.sort((a, b) => {
+            const colorA = window.getComputedStyle(a).getPropertyValue('background-color');
+            const colorB = window.getComputedStyle(b).getPropertyValue('background-color');
+
+            const hueA = parseInt(colorA.match(/\d+/g)[0]);
+            const brightnessA = parseInt(colorA.match(/\d+/g)[2]);
+
+            const hueB = parseInt(colorB.match(/\d+/g)[0]);
+            const brightnessB = parseInt(colorB.match(/\d+/g)[2]);
+
+            if (hueA === hueB) {
+                return brightnessA - brightnessB;
+            } else {
+                return hueA - hueB;
+            }
+        });
+
+        // Reorder the color boxes in the DOM
+        colorBoxes.forEach(colorBox => {
+            colorContainer.appendChild(colorBox);
+        });
+    </script>
+</body>
+</html>
