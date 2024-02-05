@@ -76,7 +76,6 @@
                 margin: 20px auto; /* Center the table and provide a margin */
                 border-collapse: collapse;
             }
-
             .project-table th, .project-table td {
                 border: 1px solid #ddd;
                 padding: 8px;
@@ -87,7 +86,7 @@
                 background-color: #f4f4f4;
             }
             /* Add this to your existing styles */
-            #view-switch {
+            select {
                 padding: 8px;
                 font-size: 16px;
                 border: 1px solid #ddd;
@@ -125,10 +124,18 @@
             }
 
             #code-view pre {
-                background-color: #f4f4f4;
+                background-color: #f8f8f8;
                 border: 1px solid #ddd;
                 padding: 15px;
                 overflow: auto;
+            }
+            table.project-table > tbody > tr > td:first-child {
+                font-style: italic;
+            }
+            #json-view {
+            display: none;
+            width: 100%;
+            margin: 20px auto;
             }
         </style>
     </head>
@@ -138,8 +145,8 @@
             <a href="#s1">Section 1: Overview</a> 
             <a href="#s2">Section 2: Project Structure</a>
             <a href="#s3">Section 3: Public Folder</a>
-            <a href="#s4">Section 4: JavaScript files</a>
-            <a href="#s5">Section 5: JSON</a>
+            <a href="#s4">Section 4: JSON files</a>
+            <a href="#s5">Section 5: .js</a>
             <a href="#s6">Section 6: </a>
         </div>
         <div id="content">
@@ -190,7 +197,42 @@
                                 <td>/dev/documentation.html</td>
                                 <td>Detailed documentation for developers and contributors.</td>
                             </tr>
-                            <!-- Add more rows as needed -->
+                            <tr>
+                                <td>/JSON/letter.json</td>
+                                <td>JSON file containing data related to letters in the conlang.</td>
+                            </tr>
+                            <tr>
+                                <td>/JSON/imports.json</td>
+                                <td>JSON file specifying external imports for the project.</td>
+                            </tr>
+                            <tr>
+                                <td>/client.js</td>
+                                <td>JavaScript file handling client-side functionality.</td>
+                            </tr>
+                            <tr>
+                                <td>/script.js</td>
+                                <td>Main JavaScript file orchestrating project-wide functionality.</td>
+                            </tr>
+                            <tr>
+                                <td>/dictionary.css</td>
+                                <td>CSS file styling the dictionary page.</td>
+                            </tr>
+                            <tr>
+                                <td>/style.css</td>
+                                <td>Global CSS styles for the entire project.</td>
+                            </tr>
+                            <tr>
+                                <td>/contact.html</td>
+                                <td>Contact page for users to reach out for inquiries or support.</td>
+                            </tr>
+                            <tr>
+                                <td>/dictionary.html</td>
+                                <td>Dictionary page providing an interactive interface for language exploration.</td>
+                            </tr>
+                            <tr>
+                                <td>/index.html</td>
+                                <td>Main landing page introducing the Malo conlang and worldbuilding project.</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -233,6 +275,99 @@
                 <p>
                     Explore the color palette used in the project by visiting the <a href="color.html">Color Palette Showcase</a> page.
                 </p>
+            </div>
+            <div id="section_four">
+                <h2 id="s4">Section 4: JSON</h2>
+                <p>
+                    These are the JSON files available:
+                </p>
+                <!-- Dropdown for switching views -->
+                <label for="JSON-switch">Select JSON: </label>
+                <select id="JSON-switch" onchange="toggleJSON()">
+                    <option value="none">None</option>
+                    <optgroup label="Code">
+                        <option value="letter">letter.json</option>
+                        <option value="import">import.json</option>
+                    </optgroup>
+                </select>
+                <div id="JSONdisplay">
+                    <!-- Content of letter.json -->
+                    <pre><code style="width: 100%;margin: 20px auto;">
+                    </code></pre>
+                </div>
+                <script defer>
+                    function toggleJSON() {
+                        var viewSwitch = document.getElementById("JSON-switch");
+                        var JSONdisplay = document.getElementById("JSONdisplay");
+                
+                        if (viewSwitch.value === "letter") {
+                            fetch('../JSON/letter.json')
+                                .then(response => response.json())
+                                .then(data => {
+                                    // Set the fetched content as the inner HTML
+                                    JSONdisplay.innerHTML = `<pre><code style="width: 100%; margin: 20px auto;">\n${JSON.stringify(data, null, 4)}\n</code></pre>`;
+                                })
+                                .catch(error => console.error('Error fetching import.json:', error));
+                        } else if (viewSwitch.value === "none") {
+                            JSONdisplay.innerHTML = `<pre><code  style="width: 100%;margin: 20px auto;"></code></pre>`;
+                        } else {
+                            fetch('../JSON/imports.json')
+                                .then(response => response.json())
+                                .then(data => {
+                                    // Set the fetched content as the inner HTML
+                                    JSONdisplay.innerHTML = `<pre><code style="width: 100%; margin: 20px auto;">\n${JSON.stringify(data, null, 4)}\n</code></pre>`;
+                                })
+                                .catch(error => console.error('Error fetching import.json:', error));
+                        }
+                    }
+                </script>
+            </div>
+            <div id="section_five">
+                <h2 id="s5">Section 5: .js files</h2>
+                <p>The following are the js files</p>
+                <!-- Dropdown for switching views -->
+                <label for="js-switch">Select .js: </label>
+                <select id="js-switch" onchange="toggleJS()">
+                    <option value="none">None</option>
+                    <optgroup label="Malo">
+                        <option value="app">app.js</option>
+                    </optgroup>
+                    <optgroup label="Public">
+                        <option value="client">client.js</option>
+                        <option value="script">script.js</option>
+                    </optgroup>
+                </select>
+                <div id="jsdisplay">
+                    <!-- Content of letter.json -->
+                    <pre><code style="width: 100%;margin: 20px auto;">
+                    </code></pre>
+                </div>
+                <script defer>
+                    function toggleJS() {
+                        var viewSwitch = document.getElementById("js-switch");
+                        var jsdisplay = document.getElementById("jsdisplay");
+                
+                        if (viewSwitch.value === "app") {
+                            console.log("Fetching app.js...");
+                            fetch('../../app.js')
+                                .then(response => {
+                                    console.log("Response:", response);
+                                    return response.text();
+                                })
+                                .then(data => {
+                                    console.log("Data:", data);
+                                    jsdisplay.innerHTML = `<pre><code style="width: 100%; margin: 20px auto;">\n${data}\n</code></pre>`;
+                                })
+                                .catch(error => {
+                                    console.error('Error fetching app.js:', error);
+                                });
+                        } else if (viewSwitch.value === "none") {
+                            jsdisplay.innerHTML = `<pre><code style="width: 100%;margin: 20px auto;"></code></pre>`;
+                        } else {
+                            // Handle other cases as needed
+                        }
+                    }
+                </script>
             </div>
             <div id="section_6">
                 <h2 id="s6">Section 6: Usage</h2>

@@ -11,6 +11,13 @@ const db = new sqlite3.Database('mydatabase.db');
 // Use morgan for logging
 // app.use(morgan('combined')); // uncomment to turn on server side logging
 
+// Define a route to serve app.js
+app.get('/app.js', (req, res) => {
+    res.sendFile(path.join(__dirname, 'app.js'));
+  });
+  
+  // Your other ro
+
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
