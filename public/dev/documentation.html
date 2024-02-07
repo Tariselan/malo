@@ -22,7 +22,7 @@
                 background-color: #f4f4f4;
                 border: 1px solid #ddd;
                 border-left: 3px solid #6f42c1;
-                color: #6738bd;
+                color: #6d39cc;
                 display: block;
                 margin: 0 0 20px;
                 overflow: auto;
@@ -363,8 +363,34 @@
                                 });
                         } else if (viewSwitch.value === "none") {
                             jsdisplay.innerHTML = `<pre><code style="width: 100%;margin: 20px auto;"></code></pre>`;
-                        } else {
-                            // Handle other cases as needed
+                        } else if (viewSwitch.value === "client") {
+                            console.log("Fetching app.js...");
+                            fetch('../client.js')
+                                .then(response => {
+                                    console.log("Response:", response);
+                                    return response.text();
+                                })
+                                .then(data => {
+                                    console.log("Data:", data);
+                                    jsdisplay.innerHTML = `<pre><code style="width: 100%; margin: 20px auto;">\n${data}\n</code></pre>`;
+                                })
+                                .catch(error => {
+                                    console.error('Error fetching app.js:', error);
+                                });
+                        } else if (viewSwitch.value === "script") {
+                            console.log("Fetching app.js...");
+                            fetch('../script.js')
+                                .then(response => {
+                                    console.log("Response:", response);
+                                    return response.text();
+                                })
+                                .then(data => {
+                                    console.log("Data:", data);
+                                    jsdisplay.innerHTML = `<pre><code style="width: 100%; margin: 20px auto;">\n${data}\n</code></pre>`;
+                                })
+                                .catch(error => {
+                                    console.error('Error fetching app.js:', error);
+                                });
                         }
                     }
                 </script>
