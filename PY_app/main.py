@@ -1,4 +1,9 @@
 import tkinter as tk
+import language_info
+import settings
+import culture
+import history
+
 
 class Malo:
     def __init__(self, root):
