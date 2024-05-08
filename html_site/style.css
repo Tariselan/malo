@@ -1,0 +1,41 @@
+:root {
+  --dark: #22092c;
+  --mid-dark: #872341;
+  --mid-dark-border: #7b1533;
+  --mid-light: #ae2235;
+  --light: #f05941;
+  --bright: #ffc400;
+}
+
+body {
+  background-color: var(--dark);
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+nav {
+  background-color: var(--mid-dark);
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+}
+
+nav ul li a {
+  display: inline-block;
+  padding: 20px 20px;
+  border-right: 10px solid var(--mid-dark-border);
+  color: var(--dark);
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+  background-color: var(--mid-light);
+}
