@@ -1,41 +1,68 @@
-:root {
-  --dark: #22092c;
-  --mid-dark: #872341;
-  --mid-dark-border: #7b1533;
-  --mid-light: #ae2235;
-  --light: #f05941;
-  --bright: #ffc400;
-}
-
 body {
-  background-color: var(--dark);
+  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #f7f7f7;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure the body stretches to at least the height of the viewport */
 }
-nav {
-  background-color: var(--mid-dark);
+
+header {
+  background-color: #2c3e50;
+  color: #ffffff;
+  padding: 20px;
+}
+
+header h1 {
+  margin: 0;
 }
 
 nav ul {
   list-style-type: none;
-  margin: 0;
   padding: 0;
+  margin: 0;
 }
 
 nav ul li {
-  display: inline;
+  display: inline-block;
+  margin-right: 20px;
 }
 
 nav ul li a {
-  display: inline-block;
-  padding: 20px 20px;
-  border-right: 10px solid var(--mid-dark-border);
-  color: var(--dark);
+  color: #ffffff;
   text-decoration: none;
-  transition: background-color 0.3s ease;
 }
 
-nav ul li a:hover {
-  background-color: var(--mid-light);
+nav ul li ul {
+  display: none;
+  position: absolute;
+  background-color: #2c3e50;
+  padding: 10px;
+}
+
+nav ul li:hover ul {
+  display: block;
+}
+
+nav ul li ul li {
+  display: block;
+  margin: 10px 0;
+}
+
+main {
+  flex: 1; /* Ensure the main content area grows to fill the remaining space */
+  padding: 20px;
+}
+
+section {
+  margin-bottom: 30px;
+}
+
+footer {
+  background-color: #34495e;
+  color: #ffffff;
+  text-align: center;
+  padding: 10px;
+  margin-top: auto; /* Push the footer to the bottom */
 }
